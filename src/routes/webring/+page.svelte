@@ -3,7 +3,7 @@
 
 	let { data } = $props();
 	let sites = data.webring.sites.filter(site => site.active);
-	let showWidget = false;
+	let showWidget = $state(false);
 </script>
 
 <SEO
