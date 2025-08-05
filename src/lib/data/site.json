@@ -52,6 +52,12 @@
           "description": "A network of websites from OpenMaking course participants",
           "link": "/webring",
           "external": false
+        },
+        {
+          "title": "Guestbook",
+          "description": "Leave a message and share where you're from",
+          "link": "/guestbook",
+          "external": false
         }
       ]
     }
