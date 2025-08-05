@@ -1,9 +1,9 @@
 <script>
   import { page } from '$app/stores';
-  
+
   // Required props
   export let title = '';
-  
+
   // Optional props with defaults
   export let description = '';
   export let type = 'website'; // website, article, etc.
@@ -14,20 +14,20 @@
   export let author = '';
   export let keywords = '';
   export let canonical = '';
-  
+
   // Site configuration
   const domain = 'https://openmaking.club';
   const siteName = 'OpenMaking';
   const defaultAuthor = 'Aman Bhargava';
-  
+
   // Computed values
-  $: fullTitle = courseId 
-    ? `${title} | ${courseId.toUpperCase()}` 
+  $: fullTitle = courseId
+    ? `${title} | ${courseId.toUpperCase()}`
     : title || 'OpenMaking';
-  
-  $: ogImage = image || `${domain}/og?title=${encodeURIComponent(title)}&courseId=${encodeURIComponent(courseId)}&type=${encodeURIComponent(contentType)}&date=${encodeURIComponent(date || new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }))}`;
+
+  $: ogImage = image || `https://openmaking.netlify.app/og?title=${encodeURIComponent(title)}&courseId=${encodeURIComponent(courseId)}&type=${encodeURIComponent(contentType)}&date=${encodeURIComponent(date || new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }))}`;
   $: fullOgImageUrl = image && image.startsWith('/')
-    ? `https://wsrv.nl/?url=${encodeURIComponent(`https://openmaking.club${image}`)}&w=1200&h=627&fit=cover&output=jpg&q=85&maxage=7d`
+    ? `https://wsrv.nl/?url=${encodeURIComponent(`https://openmaking.netlify.app${image}`)}&w=1200&h=627&fit=cover&output=jpg&q=85&maxage=7d`
     : ogImage
     ? `https://wsrv.nl/?url=${encodeURIComponent(ogImage)}&w=1200&h=627&fit=cover&output=jpg&q=85&maxage=7d`
     : '';
