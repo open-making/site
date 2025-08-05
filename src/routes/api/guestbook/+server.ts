@@ -2,7 +2,7 @@ import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { getStore } from '@netlify/blobs';
 import { dev } from '$app/environment';
-import { ADMIN_PASSWORD } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 
 interface GuestbookEntry {
   id: string;
@@ -179,7 +179,7 @@ export const DELETE: RequestHandler = async ({ request, url }) => {
   try {
     // Simple authentication check
     const authHeader = request.headers.get('Authorization');
-    const adminPassword = ADMIN_PASSWORD || 'admin123';
+    const adminPassword = env.ADMIN_PASSWORD || 'admin123';
     
     if (!authHeader || authHeader !== `Bearer ${adminPassword}`) {
       return json({ error: 'Unauthorized' }, { status: 401 });
