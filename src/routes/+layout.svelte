@@ -1,8 +1,21 @@
+<!--
+	Open Making Site - A personal portfolio and project showcase
+	Created by Aman Bhargava
+
+	This project is open source and available under the MIT License.
+	Feel free to use, modify, and distribute as you see fit.
+
+	Attribution appreciated but not required.
+	GitHub: https://github.com/amnbh/open-making
+
+	Built with SvelteKit, love, and late-night coding sessions.
+-->
+
 <script lang="ts">
 	import '../app.css';
 
 	let { children } = $props();
-	let theme = 'dark';
+	let theme = $state('dark');
 
 	function toggleTheme() {
 		theme = theme === 'dark' ? 'light' : 'dark';
@@ -27,5 +40,13 @@
 		</div>
 
 		{@render children?.()}
+
+		<!-- OSS Attribution Footer -->
+		<footer class="mt-12 pt-8 border-t border-[var(--color-text-dim)] border-opacity-20">
+			<div class="text-xs text-[var(--color-text-dim)] font-mono">
+				<p>MIT License • <a href="https://github.com/open-making/site" class="text-[var(--color-accent)] hover:underline">View on GitHub</a></p>
+				<p class="mt-1">Built with SvelteKit</p>
+			</div>
+		</footer>
 	</div>
 </div>
