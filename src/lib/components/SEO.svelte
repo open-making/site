@@ -27,9 +27,9 @@
   
   $: ogImage = image || `${domain}/og?title=${encodeURIComponent(title)}&courseId=${encodeURIComponent(courseId)}&type=${encodeURIComponent(contentType)}&date=${encodeURIComponent(date || new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }))}`;
   $: fullOgImageUrl = image && image.startsWith('/')
-    ? `https://openmaking.club${image}`
+    ? `https://wsrv.nl/?url=${encodeURIComponent(`https://openmaking.club${image}`)}&w=1200&h=627&fit=cover&output=jpg&q=85&maxage=7d`
     : ogImage
-    ? `https://wsrv.nl/?url=${encodeURIComponent(new URL(ogImage, 'https://openmaking.club/').toString())}&w=1200&h=627&fit=cover&output=jpg&q=85&maxage=7d`
+    ? `https://wsrv.nl/?url=${encodeURIComponent(ogImage)}&w=1200&h=627&fit=cover&output=jpg&q=85&maxage=7d`
     : '';
   $: currentUrl = canonical || ($page.url.href.startsWith('http') ? $page.url.href : `${domain}${$page.url.pathname}`);
   $: finalAuthor = author || defaultAuthor;

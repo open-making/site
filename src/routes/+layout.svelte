@@ -19,7 +19,7 @@
 		<!-- Theme toggle -->
 		<div class="md:fixed absolute top-4 right-4">
 			<button
-				on:click={toggleTheme}
+				onclick={toggleTheme}
 				class="text-xs text-[var(--color-text-dim)] hover:text-[var(--color-accent)] transition-colors font-mono cursor-pointer border-none bg-transparent"
 			>
 				[theme: {theme}]
