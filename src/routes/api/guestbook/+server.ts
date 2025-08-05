@@ -1,6 +1,7 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { getStore } from '@netlify/blobs';
+import { dev } from '$app/environment';
 
 interface GuestbookEntry {
   id: string;
@@ -18,8 +19,8 @@ const RATE_LIMIT_PREFIX = "rate_limit_";
 // In-memory fallback for local development
 let localEntries: GuestbookEntry[] = [];
 
-// Check if we're in production (Netlify environment)
-const isProduction = process.env.NETLIFY === 'true';
+// Use SvelteKit's dev flag
+const isProduction = !dev;
 
 export const GET: RequestHandler = async () => {
   try {
@@ -87,8 +88,8 @@ export const POST: RequestHandler = async ({ request, getClientAddress, platform
       } else if (country?.name) {
         location = country.name;
       }
-    } else {
-      // Mock location for local development
+    } else if (dev) {
+      // Mock location for local development only
       location = 'Local Development';
     }
 
@@ -166,6 +167,55 @@ export const POST: RequestHandler = async ({ request, getClientAddress, platform
     
   } catch (error) {
     console.error('POST error:', error);
+    return json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    );
+  }
+};
+
+export const DELETE: RequestHandler = async ({ request, url }) => {
+  try {
+    // Simple authentication check
+    const authHeader = request.headers.get('Authorization');
+    const adminPassword = process.env.ADMIN_PASSWORD || 'admin123';
+    
+    if (!authHeader || authHeader !== `Bearer ${adminPassword}`) {
+      return json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const entryId = url.searchParams.get('id');
+    if (!entryId) {
+      return json({ error: 'Entry ID is required' }, { status: 400 });
+    }
+
+    if (isProduction) {
+      // Use Netlify Blobs in production
+      const store = getStore("guestbook");
+      const existingEntriesData = await store.get(ENTRIES_KEY, { type: "json" });
+      const existingEntries: GuestbookEntry[] = existingEntriesData || [];
+
+      const filteredEntries = existingEntries.filter(entry => entry.id !== entryId);
+      
+      if (filteredEntries.length === existingEntries.length) {
+        return json({ error: 'Entry not found' }, { status: 404 });
+      }
+
+      await store.setJSON(ENTRIES_KEY, filteredEntries);
+    } else {
+      // Use in-memory storage for local development
+      const initialLength = localEntries.length;
+      localEntries = localEntries.filter(entry => entry.id !== entryId);
+      
+      if (localEntries.length === initialLength) {
+        return json({ error: 'Entry not found' }, { status: 404 });
+      }
+    }
+
+    return json({ success: true, message: 'Entry deleted successfully' });
+    
+  } catch (error) {
+    console.error('DELETE error:', error);
     return json(
       { error: 'Internal server error' },
       { status: 500 }
