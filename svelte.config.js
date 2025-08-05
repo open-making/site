@@ -7,10 +7,8 @@ const config = {
 	// for more information about preprocessors
 	preprocess: vitePreprocess(),
 	kit: { adapter: adapter({
-		routes: {
-			include: ['*'],
-			exclude: ['<all>']
-		}
+		split: true,
+		edge: false
 	}) }
 };
 
