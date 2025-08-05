@@ -44,14 +44,14 @@
 
 :root {
   /* Dark theme (default) */
-  --color-bg: var(--color-base-950);
+  --color-bg: var(--color-base-black);
   --color-text: var(--color-base-100);
   --color-text-muted: var(--color-base-300);
   --color-text-dim: var(--color-base-300);
   --color-text-subtle: var(--color-base-500);
   --color-accent: var(--color-yellow);
   --color-primary: var(--color-red);
-  --color-link: var(--color-blue);
+  --color-link: var(--color-blue-light);
   --color-link-hover: var(--color-blue-light);
   --color-border: var(--color-base-700);
 }
@@ -65,7 +65,7 @@
     --color-text-subtle: var(--color-base-600);
     --color-accent: var(--color-orange);
     --color-primary: var(--color-red);
-    --color-link: var(--color-blue);
+    --color-link: var(--color-blue-light);
     --color-link-hover: var(--color-blue-light);
     --color-border: var(--color-base-200);
   }
@@ -85,14 +85,14 @@
 }
 
 [data-theme="dark"] {
-  --color-bg: var(--color-base-950);
+  --color-bg: var(--color-base-black);
   --color-text: var(--color-base-100);
   --color-text-muted: var(--color-base-300);
   --color-text-dim: var(--color-base-300);
   --color-text-subtle: var(--color-base-500);
   --color-accent: var(--color-yellow);
   --color-primary: var(--color-red);
-  --color-link: var(--color-blue);
+  --color-link: var(--color-blue-light);
   --color-link-hover: var(--color-blue-light);
   --color-border: var(--color-base-700);
 }
@@ -102,26 +102,26 @@
     background-color: var(--color-bg);
     font-family: 'JetBrains Mono', monospace;
   }
-  
+
   /* Respect user motion preferences */
   @media (prefers-reduced-motion: no-preference) {
     :root {
       --transition-duration: 0.2s;
       --transition-easing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
-    
+
     html {
       transition: background-color var(--transition-duration) var(--transition-easing);
     }
-    
+
     * {
-      transition: 
+      transition:
         color var(--transition-duration) var(--transition-easing),
         border-color var(--transition-duration) var(--transition-easing),
         background-color var(--transition-duration) var(--transition-easing);
     }
   }
-  
+
   /* No transitions for users who prefer reduced motion */
   @media (prefers-reduced-motion: reduce) {
     *,
