@@ -9,7 +9,7 @@
   let authenticated = $state(false);
   let deleting = $state(new Set());
 
-  const API_URL = '/api/guestbook';
+  const API_URL = '/.netlify/functions/guestbook';
 
   async function authenticate() {
     if (!password.trim()) {

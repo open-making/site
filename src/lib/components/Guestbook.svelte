@@ -1,4 +1,5 @@
-<script>
+<script lang="ts">
+  //@ts-nocheck
   import { onMount } from 'svelte';
 
   let entries = $state([]);
@@ -12,7 +13,7 @@
   let comment = $state('');
   let course = $state('');
 
-  const API_URL = '/api/guestbook';
+  const API_URL = '/.netlify/functions/guestbook';
 
   async function fetchEntries() {
     loading = true;
@@ -85,7 +86,7 @@
     }
   }
 
-  function formatDate(timestamp) {
+  function formatDate(timestamp: string) {
     return new Date(timestamp).toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'short',
