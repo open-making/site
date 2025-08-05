@@ -1,9 +1,9 @@
 <script>
   import { page } from '$app/stores';
-
+  
   // Required props
   export let title = '';
-
+  
   // Optional props with defaults
   export let description = '';
   export let type = 'website'; // website, article, etc.
@@ -14,26 +14,32 @@
   export let author = '';
   export let keywords = '';
   export let canonical = '';
-
+  
   // Site configuration
   const domain = 'https://openmaking.club';
   const siteName = 'OpenMaking';
   const defaultAuthor = 'Aman Bhargava';
-
+  
   // Computed values
-  $: fullTitle = courseId
-    ? `${title} | ${courseId.toUpperCase()}`
+  $: fullTitle = courseId 
+    ? `${title} | ${courseId.toUpperCase()}` 
     : title || 'OpenMaking';
-
-  $: fullOgImageUrl = image && image.startsWith('/') ? `${domain}${image}` : image;
+  
+  $: ogImage = image || `${domain}/og?title=${encodeURIComponent(title)}&courseId=${encodeURIComponent(courseId)}&type=${encodeURIComponent(contentType)}&date=${encodeURIComponent(date || new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }))}`;
+  $: fullOgImageUrl = image && image.startsWith('/')
+    ? `https://openmaking.club${image}`
+    : ogImage
+    ? `https://wsrv.nl/?url=${encodeURIComponent(new URL(ogImage, 'https://openmaking.club/').toString())}&w=1200&h=627&fit=cover&output=jpg&q=85&maxage=7d`
+    : '';
   $: currentUrl = canonical || ($page.url.href.startsWith('http') ? $page.url.href : `${domain}${$page.url.pathname}`);
   $: finalAuthor = author || defaultAuthor;
   $: articleType = contentType === 'assignment' || contentType === 'day' ? 'article' : type;
+  $: finalDescription = description || `${contentType === 'assignment' ? 'Assignment' : contentType === 'day' ? 'Course material' : 'Course page'} for ${courseId || 'OpenMaking'}`;
 </script>
 
 <svelte:head>
   <title>{fullTitle}</title>
-  <meta name="description" content={description} />
+  <meta name="description" content={finalDescription} />
 
   <!-- Author and Keywords -->
   <meta name="author" content={finalAuthor} />
@@ -45,7 +51,7 @@
   <meta property="og:type" content={articleType} />
   <meta property="og:url" content={currentUrl} />
   <meta property="og:title" content={fullTitle} />
-  <meta property="og:description" content={description} />
+  <meta property="og:description" content={finalDescription} />
   <meta property="og:image" content={fullOgImageUrl} />
   <meta property="og:site_name" content={siteName} />
 
@@ -53,7 +59,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" content={currentUrl} />
   <meta name="twitter:title" content={fullTitle} />
-  <meta name="twitter:description" content={description} />
+  <meta name="twitter:description" content={finalDescription} />
   <meta name="twitter:image" content={fullOgImageUrl} />
   <meta name="twitter:creator" content="@amanbhargava" />
 
@@ -72,7 +78,7 @@
       "@context": "https://schema.org",
       "@type": "Article",
       "headline": fullTitle,
-        "description": description,
+        "description": finalDescription,
       "author": {
         "@type": "Person",
         "name": finalAuthor
