@@ -41,12 +41,7 @@
     {
       "title": "LINKS",
       "items": [
-        {
-          "title": "GitHub Repositories",
-          "description": "Code from OpenMaking courses",
-          "link": "https://github.com/open-making",
-          "external": true
-        },
+
         {
           "title": "OpenMaking WebRing",
           "description": "A network of websites from OpenMaking course participants",
@@ -58,6 +53,12 @@
           "description": "Leave a message and share where you're from",
           "link": "/guestbook",
           "external": false
+        },
+        {
+          "title": "GitHub Repositories",
+          "description": "Code from OpenMaking courses",
+          "link": "https://github.com/open-making",
+          "external": true
         }
       ]
     }

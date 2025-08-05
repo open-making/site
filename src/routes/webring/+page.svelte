@@ -14,17 +14,8 @@
 
 <div class="w-full">
 
-	<!-- Header -->
-	<div class="text-left mb-16">
-		<h1 class="text-2xl font-bold tracking-[3px] text-[var(--color-accent)] font-mono">
-			<a href="/" class="text-[var(--color-accent)] no-underline border-b border-dotted border-[var(--color-accent)] hover:text-[var(--color-link-hover)] hover:border-solid hover:border-[var(--color-link-hover)]">OPENMAKING</a>
-			<span class="text-[var(--color-text-dim)]"> / WEBRING</span>
-		</h1>
-		<p class="text-[var(--color-text-muted)] mt-2 font-mono text-sm">connecting websites made for OpenMaking courses</p>
-	</div>
-
 	<!-- Sites -->
-	<div class="my-16">
+	<div class="mt-8">
 		<div class="border-t border-[var(--color-border)] pt-8 mb-6">
 			{#if sites.length === 0}
 				<p class="text-[var(--color-text-dim)] font-mono text-sm">no sites connected yet</p>
