@@ -1,6 +1,6 @@
 {
   "header": {
-    "title": "OPEN MAKING",
+    "title": "OPENMAKING",
     "subtitle": "open source resources for learning code and other tech miscellany"
   },
   "sections": [
@@ -43,7 +43,7 @@
       "items": [
         {
           "title": "GitHub Repositories",
-          "description": "Open source projects and code examples",
+          "description": "Code from OpenMaking courses",
           "link": "https://github.com/open-making",
           "external": true
         },

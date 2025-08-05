@@ -5,12 +5,12 @@
     export let countType = 'courses';
     export let pageType = 'home';
 
-    $: bgColor = '#1a1a2e';
-    $: textColor = '#eee';
-    $: accentColor = '#ffc107';
-    $: primaryColor = '#ff6b6b';
-    $: linkColor = '#4fc3f7';
-    $: borderColor = '#333';
+    $: bgColor = 'var(--color-base-950)';
+    $: textColor = 'var(--color-base-100)';
+    $: accentColor = 'var(--color-yellow)';
+    $: primaryColor = 'var(--color-red)';
+    $: linkColor = 'var(--color-blue)';
+    $: borderColor = 'var(--color-base-700)';
 </script>
 
 <div

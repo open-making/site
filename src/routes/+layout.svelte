@@ -18,7 +18,7 @@
 <div class="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] text-sm leading-tight flex flex-col">
 	<div class="max-w-[100ch] md:min-w-[100ch] w-full mx-auto p-4 md:p-12 text-left flex-1 flex flex-col">
 		<!-- Theme toggle -->
-		<div class="md:fixed absolute top-4 right-4">
+		<div class="md:fixed hidden md:block top-4 right-4">
 			<button
 				onclick={toggleTheme}
 				class="text-xs text-[var(--color-text-dim)] hover:text-[var(--color-accent)] transition-colors font-mono cursor-pointer border-none bg-transparent"

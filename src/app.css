@@ -1,64 +1,135 @@
 @import 'tailwindcss';
 @import '@fontsource/jetbrains-mono';
 
+@theme {
+  --color-base-black: #100F0F;
+  --color-base-950: #1C1B1A;
+  --color-base-900: #282726;
+  --color-base-850: #343331;
+  --color-base-800: #403E3C;
+  --color-base-700: #575653;
+  --color-base-600: #6F6E69;
+  --color-base-500: #878580;
+  --color-base-300: #B7B5AC;
+  --color-base-200: #CECDC3;
+  --color-base-150: #DAD8CE;
+  --color-base-100: #E6E4D9;
+  --color-base-50: #F2F0E5;
+  --color-base-paper: #FFFCF0;
+
+  --color-red: #AF3029;
+  --color-red-light: #D14D41;
+
+  --color-orange: #BC5215;
+  --color-orange-light: #DA702C;
+
+  --color-yellow: #AD8301;
+  --color-yellow-light: #D0A215;
+
+  --color-green: #66800B;
+  --color-green-light: #879A39;
+
+  --color-cyan: #24837B;
+  --color-cyan-light: #3AA99F;
+
+  --color-blue: #205EA6;
+  --color-blue-light: #4385BE;
+
+  --color-purple: #5E409D;
+  --color-purple-light: #8B7EC8;
+
+  --color-magenta: #A02F6F;
+  --color-magenta-light: #CE5D97;
+}
+
 :root {
   /* Dark theme (default) */
-  --color-bg: #1a1a2e;
-  --color-text: #eee;
-  --color-text-muted: #bbb;
-  --color-text-dim: #888;
-  --color-text-subtle: #666;
-  --color-accent: #ffc107;
-  --color-primary: #ff6b6b;
-  --color-link: #4fc3f7;
-  --color-link-hover: #81d4fa;
-  --color-border: #333;
+  --color-bg: var(--color-base-950);
+  --color-text: var(--color-base-100);
+  --color-text-muted: var(--color-base-300);
+  --color-text-dim: var(--color-base-300);
+  --color-text-subtle: var(--color-base-500);
+  --color-accent: var(--color-yellow);
+  --color-primary: var(--color-red);
+  --color-link: var(--color-blue);
+  --color-link-hover: var(--color-blue-light);
+  --color-border: var(--color-base-700);
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    --color-bg: #ffffff;
-    --color-text: #1a1a1a;
-    --color-text-muted: #444;
-    --color-text-dim: #666;
-    --color-text-subtle: #888;
-    --color-accent: #d97706;
-    --color-primary: #dc2626;
-    --color-link: #0284c7;
-    --color-link-hover: #0369a1;
-    --color-border: #e5e5e5;
+    --color-bg: var(--color-base-paper);
+    --color-text: var(--color-base-black);
+    --color-text-muted: var(--color-base-800);
+    --color-text-dim: var(--color-base-700);
+    --color-text-subtle: var(--color-base-600);
+    --color-accent: var(--color-orange);
+    --color-primary: var(--color-red);
+    --color-link: var(--color-blue);
+    --color-link-hover: var(--color-blue-light);
+    --color-border: var(--color-base-200);
   }
 }
 
 [data-theme="light"] {
-  --color-bg: #ffffff;
-  --color-text: #1a1a1a;
-  --color-text-muted: #444;
-  --color-text-dim: #666;
-  --color-text-subtle: #888;
-  --color-accent: #d97706;
-  --color-primary: #dc2626;
-  --color-link: #0284c7;
-  --color-link-hover: #0369a1;
-  --color-border: #e5e5e5;
+  --color-bg: var(--color-base-paper);
+  --color-text: var(--color-base-black);
+  --color-text-muted: var(--color-base-800);
+  --color-text-dim: var(--color-base-700);
+  --color-text-subtle: var(--color-base-600);
+  --color-accent: var(--color-orange);
+  --color-primary: var(--color-red);
+  --color-link: var(--color-blue);
+  --color-link-hover: var(--color-blue-light);
+  --color-border: var(--color-base-200);
 }
 
 [data-theme="dark"] {
-  --color-bg: #1a1a2e;
-  --color-text: #eee;
-  --color-text-muted: #bbb;
-  --color-text-dim: #888;
-  --color-text-subtle: #666;
-  --color-accent: #ffc107;
-  --color-primary: #ff6b6b;
-  --color-link: #4fc3f7;
-  --color-link-hover: #81d4fa;
-  --color-border: #333;
+  --color-bg: var(--color-base-950);
+  --color-text: var(--color-base-100);
+  --color-text-muted: var(--color-base-300);
+  --color-text-dim: var(--color-base-300);
+  --color-text-subtle: var(--color-base-500);
+  --color-accent: var(--color-yellow);
+  --color-primary: var(--color-red);
+  --color-link: var(--color-blue);
+  --color-link-hover: var(--color-blue-light);
+  --color-border: var(--color-base-700);
 }
 
 @layer base {
   html {
     background-color: var(--color-bg);
     font-family: 'JetBrains Mono', monospace;
+  }
+  
+  /* Respect user motion preferences */
+  @media (prefers-reduced-motion: no-preference) {
+    :root {
+      --transition-duration: 0.2s;
+      --transition-easing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    html {
+      transition: background-color var(--transition-duration) var(--transition-easing);
+    }
+    
+    * {
+      transition: 
+        color var(--transition-duration) var(--transition-easing),
+        border-color var(--transition-duration) var(--transition-easing),
+        background-color var(--transition-duration) var(--transition-easing);
+    }
+  }
+  
+  /* No transitions for users who prefer reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
