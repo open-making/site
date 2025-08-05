@@ -10,7 +10,9 @@
 />
 <!-- Header -->
 <div class="text-left mb-12">
-	<h1 class="text-xl font-bold tracking-[2px] text-[var(--color-accent)]">{data.header.title}</h1>
+	<a href="/" class="text-[var(--color-accent)] border-b border-dotted border-[var(--color-accent)] hover:text-[var(--color-link-hover)] hover:border-solid hover:border-[var(--color-link-hover)]">
+		<h1 class="text-xl font-bold tracking-[2px] text-[var(--color-accent)]">{data.header.title}</h1>
+	</a>
 	<p class="text-[var(--color-text-muted)] mt-1">{data.header.subtitle}</p>
 </div>
 
@@ -40,7 +42,7 @@
 {/each}
 
 <!-- Footer -->
-<div class="mt-16 text-left space-y-4 text-[var(--color-text-subtle)] border-t border-[var(--color-border)] pt-8">
+<div class="mt-16 text-left space-y-4 text-[var(--color-text-subtle)] border-t border-b border-[var(--color-border)] py-8">
 	<p>By <a href="https://aman.bh" class="text-[var(--color-link)] no-underline border-b border-dotted border-[var(--color-link)] hover:text-[var(--color-link-hover)] hover:border-solid hover:border-[var(--color-link-hover)]">Aman Bhargava</a></p>
 	<p>{data.footer.text}</p>
 	<p class="text-[var(--color-accent)] font-bold">{data.footer.cta.split(':')[0]}: <a
