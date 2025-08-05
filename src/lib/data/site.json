@@ -1,0 +1,64 @@
+{
+  "header": {
+    "title": "OPEN MAKING",
+    "subtitle": "open source resources for learning code and other tech miscellany"
+  },
+  "sections": [
+    {
+      "title": "COURSES",
+      "description": "Open courses on code, data analysis, and more",
+      "items": [
+        {
+          "title": "Introduction to Making for the Web",
+          "description": "A course on getting started with HTML, CSS and Astro",
+          "link": "https://teaching.aman.bh/web2025",
+          "external": true,
+          "period" : "JUN 2025 - AUG 2025 (3 weeks)"
+        },
+        {
+          "title": "Introduction to Data Visualization and Analysis",
+          "description": "Learning summary statistics and visualization with no-code tools",
+          "link": "https://teaching.aman.bh/cdv2025",
+          "external": true,
+          "period" : "MAR 2025 - APRIL 2025 (2 weeks)"
+        },
+        {
+          "title": "Visual Programming for Data Analysis with Orange",
+          "description": "Using Orange for no-code data analysis",
+          "link": "https://aman.bh/blog/2025/visual-programming-with-orange",
+          "external": true,
+          "period" : "MAR 2025, 6 hours"
+        },
+        {
+          "title": "Introduction to QGIS and OpenStreetMap",
+          "description": "Crash course on using QGIS and OSM for mapping and analysis",
+          "link": "https://aman.bh/qgis",
+          "external": true,
+          "period" : "MAR 2023, 6 hours"
+        }
+      ]
+    },
+    {
+      "title": "LINKS",
+      "items": [
+        {
+          "title": "GitHub Repositories",
+          "description": "Open source projects and code examples",
+          "link": "https://github.com/open-making",
+          "external": true
+        },
+        {
+          "title": "OpenMaking WebRing",
+          "description": "A network of websites from OpenMaking course participants",
+          "link": "/webring",
+          "external": false
+        }
+      ]
+    }
+  ],
+  "footer": {
+    "text": "interested in having me teach or run a workshop at your school or organization?",
+    "cta": "reach out: hi@aman.bh",
+    "link": "mailto:hi@aman.bh"
+  }
+}

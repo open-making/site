@@ -1,0 +1,14 @@
+{
+  "sites": [
+    {
+      "id": "aman-bh",
+      "url": "https://aman.bh",
+      "title": "aman.bh",
+      "author": "Aman Bhargava",
+      "dateAdded": "2025-08-04T15:27:20.988Z",
+      "active": true
+    }
+  ],
+  "lastUpdated": "2025-08-04T15:27:20.988Z",
+  "totalSites": 1
+}

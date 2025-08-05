@@ -1,0 +1,27 @@
+name: Add Website to Webring
+description: Submit your website to join the webring
+title: "[Add Site] "
+labels: ["new-site", "submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for wanting to join the webring! Please fill out the information below.
+
+  - type: input
+    id: url
+    attributes:
+      label: Website URL
+      description: Your website's full URL (including https://)
+      placeholder: https://yoursite.com
+    validations:
+      required: true
+
+  - type: input
+    id: author
+    attributes:
+      label: Author Name
+      description: Your name or handle
+      placeholder: John Doe
+    validations:
+      required: true
