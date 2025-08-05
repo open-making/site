@@ -78,7 +78,7 @@ jobs:
                   const { data: sitesFile } = await github.rest.repos.getContent({
                     owner: context.repo.owner,
                     repo: context.repo.repo,
-                    path: 'data/sites.json'
+                    path: 'src/lib/data/webring.json'
                   });
 
                   const sitesData = JSON.parse(Buffer.from(sitesFile.content, 'base64').toString());
@@ -120,11 +120,11 @@ jobs:
                   sitesData.totalSites = sitesData.sites.length;
                   sitesData.lastUpdated = new Date().toISOString();
 
-                  // Update sites.json
+                  // Update webring.json
                   await github.rest.repos.createOrUpdateFileContents({
                     owner: context.repo.owner,
                     repo: context.repo.repo,
-                    path: 'data/sites.json',
+                    path: 'src/lib/data/webring.json',
                     message: `Add ${siteTitle} to webring`,
                     content: Buffer.from(JSON.stringify(sitesData, null, 2)).toString('base64'),
                     sha: sitesFile.sha
