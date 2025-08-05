@@ -7,8 +7,16 @@
       "author": "Aman Bhargava",
       "dateAdded": "2025-08-04T15:27:20.988Z",
       "active": true
+    },
+    {
+      "id": "openmaking-club",
+      "url": "https://openmaking.club",
+      "title": "OpenMaking",
+      "author": "Open Making",
+      "dateAdded": "2025-08-05T08:42:43.596Z",
+      "active": true
     }
   ],
-  "lastUpdated": "2025-08-04T15:27:20.988Z",
-  "totalSites": 1
+  "lastUpdated": "2025-08-05T08:42:43.597Z",
+  "totalSites": 2
 }
